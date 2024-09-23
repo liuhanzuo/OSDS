@@ -8,13 +8,13 @@ type queue struct {
 	sz  int
 }
 
-func (q *queue) init(capacity int) {
+func (q *queue) Init(capacity int) {
 	q.items = make([]string, 0, capacity)
 	q.cap = capacity
 	q.sz = 0
 }
 
-func (q *queue) enqueue(item string) (int) {
+func (q *queue) Enqueue(item string) (int) {
 	if q.sz == q.cap {
 		fmt.Println("queue is full, cannot enqueue", item)
 		return 1
@@ -24,7 +24,7 @@ func (q *queue) enqueue(item string) (int) {
 	return 0
 }
 
-func (q *queue) dequeue() (string, int) {
+func (q *queue) Dequeue() (string, int) {
 	if q.sz == 0 {
 		fmt.Println("queue is empty, cannot dequeue")
 		return "", 1
@@ -35,11 +35,11 @@ func (q *queue) dequeue() (string, int) {
 	return item, 0
 }
 
-func (q *queue) size() int {
+func (q *queue) Size() int {
 	return q.sz
 }
 
-func (q *queue) capacity() int {
+func (q *queue) Capacity() int {
 	return q.cap
 }
 
@@ -47,10 +47,10 @@ func main() {
 	q := queue{}
 	q.init(2)
 	q.enqueue("mlr")
-	fmt.Println(q.size())
+	fmt.Println(q.Size())
 	q.enqueue("wsq")
-	fmt.Println(q.size())
-	fmt.Println(q.capacity())
-	fmt.Println(q.dequeue())
-	fmt.Println(q.dequeue())
+	fmt.Println(q.Size())
+	fmt.Println(q.Capacity())
+	fmt.Println(q.Dequeue())
+	fmt.Println(q.Dequeue())
 }
