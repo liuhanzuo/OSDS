@@ -8,6 +8,18 @@ I impllement the queue in ./queue.go with the needed functions.
 
 In sync.go thread, I implement concurrently working dequeue and enqueue threads
 
-However, since I do not know what to do when the queue is full/empty(whether dequeue threads should immediately return or should wait until next enqueue threads to put some data in?)
+Update1: I count time for each operation, especially for operation time and latency.
 
-note that the enviroment condition is for the later condition thus if TA tell us we should use the former one just delete the code with enviroment condition
+The place to store it is in "./data/", and the file name stand for TN -- thread number. QL -- queue length
+
+The later ones stand for enqueue_operation time and latency time/ dequeue operation/ latency time, you can see it in ./data
+
+For makefile, you can run 
+
+```makefile
+make syncall
+```
+
+to do the concurrency enqueue&dequeue(maybe for simplification need to update to make syncall 10 100)
+
+TODO: plot the figure   write the report    write a makefile for auto generation

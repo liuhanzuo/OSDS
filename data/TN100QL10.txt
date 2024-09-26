@@ -1,0 +1,201 @@
+queue length is 10, thread number is 100, result is stored in ./data/TN100QL10
+Enqueue item37 took operation 363ns and latency 4.767891ms
+Dequeue took operation 123ns and latency 6.431387ms
+Enqueue item48 took operation 91ns and latency 4.955585ms
+Enqueue item61 took operation 184ns and latency 6.32877ms
+Enqueue item34 took operation 146ns and latency 7.096822ms
+Dequeue took operation 119ns and latency 5.050033ms
+Enqueue item63 took operation 107ns and latency 5.068452ms
+Enqueue item97 took operation 116ns and latency 5.195341ms
+Dequeue took operation 136ns and latency 5.1724ms
+Dequeue took operation 212ns and latency 5.323159ms
+Enqueue item80 took operation 51ns and latency 5.319101ms
+Dequeue took operation 79ns and latency 5.228703ms
+Dequeue took operation 204ns and latency 5.328283ms
+Dequeue took operation 92ns and latency 5.418871ms
+Enqueue item3 took operation 244ns and latency 7.168064ms
+Enqueue item60 took operation 110ns and latency 7.632479ms
+Enqueue item11 took operation 200ns and latency 5.901425ms
+Enqueue item8 took operation 488ns and latency 7.49954ms
+Dequeue took operation 1.438003ms and latency 7.735161ms
+Enqueue item0 took operation 77ns and latency 7.533596ms
+Dequeue took operation 64ns and latency 6.16581ms
+Enqueue item43 took operation 108ns and latency 6.258248ms
+Enqueue item35 took operation 8.605µs and latency 7.969206ms
+Enqueue item42 took operation 74ns and latency 6.563851ms
+Dequeue took operation 104ns and latency 6.516479ms
+Enqueue item5 took operation 135ns and latency 8.125979ms
+Dequeue took operation 300ns and latency 6.59519ms
+Enqueue item23 took operation 155ns and latency 6.74594ms
+Enqueue item7 took operation 1.078µs and latency 9.283466ms
+Dequeue took operation 249ns and latency 8.463201ms
+Enqueue item98 took operation 108ns and latency 6.817506ms
+Enqueue item81 took operation 95ns and latency 7.073993ms
+Dequeue took operation 130ns and latency 7.862232ms
+Enqueue item6 took operation 52ns and latency 9.568613ms
+Dequeue took operation 102ns and latency 7.847851ms
+Enqueue item49 took operation 62ns and latency 7.921869ms
+Enqueue item95 took operation 78ns and latency 9.754763ms
+Enqueue item9 took operation 18.386µs and latency 9.849386ms
+Dequeue took operation 110ns and latency 10.048661ms
+Dequeue took operation 168ns and latency 9.961683ms
+Enqueue item4 took operation 86ns and latency 10.070377ms
+Enqueue item2 took operation 63ns and latency 9.597607ms
+Dequeue took operation 139ns and latency 9.760362ms
+Enqueue item79 took operation 78ns and latency 9.811915ms
+Dequeue took operation 144ns and latency 9.871507ms
+Enqueue item10 took operation 121ns and latency 9.923286ms
+Dequeue took operation 92ns and latency 9.830662ms
+Dequeue took operation 156ns and latency 9.798091ms
+Dequeue took operation 160ns and latency 9.978136ms
+Enqueue item64 took operation 99ns and latency 8.9792ms
+Enqueue item62 took operation 181ns and latency 10.032979ms
+Enqueue item22 took operation 255ns and latency 9.790481ms
+Dequeue took operation 412ns and latency 80.273916ms
+Enqueue item12 took operation 72.113229ms and latency 80.447051ms
+Dequeue took operation 182ns and latency 85.921762ms
+Enqueue item77 took operation 14.19µs and latency 78.134069ms
+Dequeue took operation 192ns and latency 82.937525ms
+Enqueue item78 took operation 78.611735ms and latency 88.416308ms
+Enqueue item21 took operation 78.685703ms and latency 88.396188ms
+Dequeue took operation 135ns and latency 82.95222ms
+Dequeue took operation 144ns and latency 79.662645ms
+Enqueue item1 took operation 79.45654ms and latency 89.236923ms
+Dequeue took operation 102ns and latency 79.545787ms
+Enqueue item96 took operation 79.596132ms and latency 89.502169ms
+Dequeue took operation 135ns and latency 88.248798ms
+Dequeue took operation 124ns and latency 85.08257ms
+Enqueue item36 took operation 80.072981ms and latency 89.932487ms
+Enqueue item72 took operation 1.325862ms and latency 80.121925ms
+Dequeue took operation 137ns and latency 82.58396ms
+Enqueue item75 took operation 1.284751ms and latency 80.326151ms
+Dequeue took operation 195ns and latency 80.850272ms
+Enqueue item40 took operation 1.830165ms and latency 89.043819ms
+Dequeue took operation 156ns and latency 81.213067ms
+Enqueue item83 took operation 797.015µs and latency 87.786766ms
+Dequeue took operation 92ns and latency 88.227252ms
+Enqueue item89 took operation 371.494µs and latency 84.935894ms
+Dequeue took operation 239ns and latency 85.870411ms
+Enqueue item85 took operation 202.177µs and latency 83.984143ms
+Dequeue took operation 107ns and latency 88.421937ms
+Enqueue item31 took operation 310ns and latency 87.997138ms
+Dequeue took operation 228ns and latency 84.470623ms
+Enqueue item33 took operation 1.192145ms and latency 84.675224ms
+Dequeue took operation 250ns and latency 121.312266ms
+Enqueue item24 took operation 3.911496ms and latency 123.181012ms
+Dequeue took operation 219ns and latency 118.343258ms
+Enqueue item55 took operation 165ns and latency 122.776697ms
+Dequeue took operation 380ns and latency 124.728182ms
+Enqueue item38 took operation 1.543376ms and latency 125.866501ms
+Dequeue took operation 126ns and latency 123.944367ms
+Enqueue item53 took operation 1.768409ms and latency 123.713513ms
+Dequeue took operation 150ns and latency 125.499279ms
+Enqueue item54 took operation 2.199085ms and latency 126.225845ms
+Dequeue took operation 312ns and latency 121.431922ms
+Enqueue item68 took operation 811.397µs and latency 121.656416ms
+Dequeue took operation 405ns and latency 133.928513ms
+Enqueue item45 took operation 212ns and latency 138.323692ms
+Dequeue took operation 365ns and latency 132.919917ms
+Dequeue took operation 203ns and latency 133.903068ms
+Dequeue took operation 135ns and latency 133.496797ms
+Enqueue item73 took operation 11.315081ms and latency 133.883565ms
+Enqueue item25 took operation 1.281471ms and latency 139.147959ms
+Enqueue item50 took operation 11.849383ms and latency 138.533824ms
+Dequeue took operation 156ns and latency 133.499863ms
+Enqueue item20 took operation 8.261µs and latency 135.244805ms
+Dequeue took operation 158ns and latency 139.397872ms
+Enqueue item91 took operation 207ns and latency 134.664329ms
+Dequeue took operation 229ns and latency 137.418551ms
+Enqueue item86 took operation 205ns and latency 133.708504ms
+Dequeue took operation 216ns and latency 135.178872ms
+Dequeue took operation 290ns and latency 137.012134ms
+Enqueue item29 took operation 15.47315ms and latency 140.943556ms
+Enqueue item71 took operation 114ns and latency 134.007781ms
+Dequeue took operation 268ns and latency 136.192941ms
+Enqueue item57 took operation 1.945117ms and latency 137.983864ms
+Dequeue took operation 182ns and latency 140.547681ms
+Dequeue took operation 213ns and latency 140.47516ms
+Dequeue took operation 138ns and latency 134.432413ms
+Enqueue item30 took operation 778.298µs and latency 140.621035ms
+Enqueue item92 took operation 2.066952ms and latency 134.736655ms
+Enqueue item52 took operation 758.989µs and latency 140.928182ms
+Dequeue took operation 128ns and latency 135.693182ms
+Dequeue took operation 193ns and latency 140.163459ms
+Dequeue took operation 150ns and latency 137.05703ms
+Dequeue took operation 166ns and latency 135.948044ms
+Enqueue item69 took operation 554.244µs and latency 136.134681ms
+Enqueue item56 took operation 354.343µs and latency 141.034897ms
+Enqueue item58 took operation 648.437µs and latency 140.339615ms
+Dequeue took operation 132ns and latency 142.764505ms
+Enqueue item41 took operation 353.713µs and latency 141.623773ms
+Dequeue took operation 183ns and latency 135.518388ms
+Enqueue item17 took operation 370.149µs and latency 136.973589ms
+Dequeue took operation 159ns and latency 141.186507ms
+Enqueue item19 took operation 144ns and latency 137.515827ms
+Dequeue took operation 80ns and latency 136.560699ms
+Dequeue took operation 187ns and latency 135.317787ms
+Enqueue item74 took operation 83ns and latency 136.053485ms
+Dequeue took operation 89ns and latency 141.685876ms
+Enqueue item87 took operation 111ns and latency 136.851178ms
+Dequeue took operation 173ns and latency 139.157144ms
+Dequeue took operation 126ns and latency 141.823645ms
+Enqueue item76 took operation 110ns and latency 136.273654ms
+Enqueue item59 took operation 98ns and latency 141.010659ms
+Enqueue item66 took operation 5.628µs and latency 141.93975ms
+Dequeue took operation 116ns and latency 140.158709ms
+Enqueue item14 took operation 67ns and latency 141.994498ms
+Enqueue item67 took operation 51ns and latency 140.939262ms
+Dequeue took operation 122ns and latency 141.329851ms
+Enqueue item94 took operation 63ns and latency 136.721467ms
+Dequeue took operation 114ns and latency 136.818234ms
+Dequeue took operation 157ns and latency 139.136582ms
+Dequeue took operation 347ns and latency 144.251801ms
+Enqueue item47 took operation 127.04µs and latency 140.44803ms
+Enqueue item15 took operation 217ns and latency 141.160331ms
+Enqueue item93 took operation 137.059µs and latency 137.11068ms
+Dequeue took operation 96ns and latency 141.125492ms
+Enqueue item51 took operation 210ns and latency 143.179137ms
+Dequeue took operation 100ns and latency 137.139109ms
+Dequeue took operation 161ns and latency 141.652604ms
+Dequeue took operation 141ns and latency 143.315766ms
+Enqueue item28 took operation 2.912µs and latency 144.525559ms
+Enqueue item88 took operation 114ns and latency 137.613366ms
+Dequeue took operation 114ns and latency 139.704572ms
+Enqueue item32 took operation 169ns and latency 141.570368ms
+Dequeue took operation 191ns and latency 141.749839ms
+Dequeue took operation 105ns and latency 139.964933ms
+Dequeue took operation 101ns and latency 144.614231ms
+Enqueue item26 took operation 77ns and latency 143.389989ms
+Dequeue took operation 78ns and latency 139.430504ms
+Dequeue took operation 121ns and latency 139.524582ms
+Dequeue took operation 85ns and latency 138.400663ms
+Dequeue took operation 63ns and latency 143.64209ms
+Enqueue item16 took operation 130ns and latency 140.520285ms
+Dequeue took operation 119ns and latency 139.281005ms
+Enqueue item99 took operation 140ns and latency 144.716318ms
+Enqueue item46 took operation 102ns and latency 143.106249ms
+Dequeue took operation 99ns and latency 144.4186ms
+Enqueue item65 took operation 34.221µs and latency 144.489126ms
+Dequeue took operation 99ns and latency 144.778569ms
+Dequeue took operation 165ns and latency 143.074986ms
+Enqueue item13 took operation 85ns and latency 144.859814ms
+Dequeue took operation 135ns and latency 138.793863ms
+Dequeue took operation 162ns and latency 141.712404ms
+Dequeue took operation 95ns and latency 139.269807ms
+Dequeue took operation 270ns and latency 145.738451ms
+Enqueue item44 took operation 242ns and latency 146.331086ms
+Dequeue took operation 168ns and latency 141.173717ms
+Enqueue item70 took operation 133ns and latency 139.278827ms
+Dequeue took operation 205ns and latency 146.635476ms
+Enqueue item27 took operation 635ns and latency 145.015418ms
+Dequeue took operation 219ns and latency 144.5607ms
+Enqueue item39 took operation 999ns and latency 146.884849ms
+Dequeue took operation 163ns and latency 140.354232ms
+Enqueue item84 took operation 399ns and latency 144.72907ms
+Dequeue took operation 163ns and latency 143.14407ms
+Enqueue item18 took operation 529ns and latency 143.578667ms
+Dequeue took operation 552.769µs and latency 142.008023ms
+Enqueue item90 took operation 502ns and latency 143.797635ms
+Enqueue item82 took operation 535ns and latency 147.837554ms
+Dequeue took operation 1.112904ms and latency 148.060596ms
+Dequeue took operation 1.357376ms and latency 146.032057ms
