@@ -10,3 +10,5 @@ sync:
 	go build -o sync.exe sync.go
 	./sync.exe
 syncall: sync clean
+cleantxt:
+	python3 clean_txt.py

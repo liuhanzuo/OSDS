@@ -13,3 +13,4 @@ def clean_exe_files(directory):
 if __name__ == "__main__":
     directory = './'
     clean_exe_files(directory)
+
