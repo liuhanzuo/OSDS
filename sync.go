@@ -132,7 +132,7 @@ func synccall(queue_len int,thread_num int, filename string) {
 	wait.Wait()
 }
 func main() {
-	THREAD_NUM := 100
-	QUEUE_LEN := 10
+	THREAD_NUM := 1000
+	QUEUE_LEN := 50
 	synccall(QUEUE_LEN, THREAD_NUM, fmt.Sprintf("./data/TN%dQL%d", THREAD_NUM, QUEUE_LEN))
 }

@@ -14,7 +14,7 @@ The place to store it is in "./data/", and the file name stand for TN -- thread 
 
 The later ones stand for enqueue_operation time and latency time/ dequeue operation/ latency time, you can see it in ./data
 
-For makefile, you can run 
+For makefile, you can run
 
 ```makefile
 make syncall
@@ -24,4 +24,12 @@ to do the concurrency enqueue&dequeue(maybe for simplification need to update to
 
 TODO: plot the figure   write the report    write a makefile for auto generation
 
+## Tools
 
+I implement some (not) useful tools in makefile for cleaning, you could run
+
+```makefile
+make cleantxt
+```
+
+to clean all txt files in ``./data`` ^V^
