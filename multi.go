@@ -75,13 +75,8 @@ func (q *queue) Size() int {
 func (q *queue) Capacity() int {
 	return q.cap
 }
-var lockfile sync.Mutex
-var lockos sync.Mutex
-var rcnt int
 func rsize(id string){
-	rcnt++
 	filename := "tiny-imagenet-200//test//images//test_"+id+".JPEG";
-	lockfile.Lock();
 	file, err := os.Open(filename)
 	if err != nil {
 		fmt.Println("Load picture failed", filename)
@@ -94,9 +89,7 @@ func rsize(id string){
 		log.Fatal(err)
 	}
 	file.Close()
-	lockfile.Unlock()
 	filename = "tiny-imagenet-200//test//images//resize_demo_resized_"+id+".JPEG";
-	lockos.Lock()
 	out, err := os.Create(filename)
 	if err != nil {
 		fmt.Println("Write picture failed", filename)
@@ -105,19 +98,18 @@ func rsize(id string){
 	defer out.Close()
 
 	jpeg.Encode(out, m, nil)
-	lockos.Unlock()
 }
 var wait sync.WaitGroup
 var q queue;
 func func1(i int){
-	for j:=i*100;j<i*100+100;j++{
+	for j:=i*1000;j<i*1000+1000;j++{
 		str:=fmt.Sprintf("%d",j)
 		q.Enqueue(str)
 	}
 	wait.Done()
 }
 func func2(i int){
-	for j:=0;j<100;j++{
+	for j:=0;j<1000;j++{
 		str,_,_:=q.Dequeue()
 		rsize(str)
 	}
@@ -125,14 +117,13 @@ func func2(i int){
 }
 func main(){
 	start:=time.Now()
-	q.Init(100)
-	for i:=0;i<100;i++{
+	q.Init(1000)
+	for i:=0;i<10;i++{
 		wait.Add(1)
 		go func1(i)
 		wait.Add(1)
 		go func2(i)
 	}
 	wait.Wait()
-	fmt.Println("resized cnt %d",rcnt)
 	fmt.Println("time used multi-thread %d",time.Since(start))
 }
