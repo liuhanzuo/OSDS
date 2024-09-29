@@ -102,14 +102,14 @@ func rsize(id string){
 var wait sync.WaitGroup
 var q queue;
 func func1(i int){
-	for j:=i*1000;j<i*1000+1000;j++{
+	for j:=i*100;j<i*100+100;j++{
 		str:=fmt.Sprintf("%d",j)
 		q.Enqueue(str)
 	}
 	wait.Done()
 }
 func func2(i int){
-	for j:=0;j<1000;j++{
+	for j:=0;j<100;j++{
 		str,_,_:=q.Dequeue()
 		rsize(str)
 	}
@@ -117,8 +117,8 @@ func func2(i int){
 }
 func main(){
 	start:=time.Now()
-	q.Init(1000)
-	for i:=0;i<10;i++{
+	q.Init(100)
+	for i:=0;i<100;i++{
 		wait.Add(1)
 		go func1(i)
 		wait.Add(1)
