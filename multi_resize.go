@@ -81,7 +81,7 @@ func (q *queue) Capacity() int {
 }
 
 func (q *queue) resize() (string, string, int, time.Duration) {
-	fmt.Println("resize starting")
+	//	fmt.Println("resize starting")
 	start := time.Now()
 	filename, _, _ := q.Dequeue()
 	fmt.Println(filename)
@@ -156,7 +156,7 @@ func main() {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			filenames, store_filenames, errs, op_times, latencys := q.multi_resize(TOTAL_NUM/THREAD_NUM)
+			filenames, store_filenames, errs, op_times, latencys := q.multi_resize(TOTAL_NUM / THREAD_NUM)
 			for j := range filenames {
 				log.filename = append(log.filename, filenames[j])
 				log.store_filename = append(log.store_filename, store_filenames[j])
@@ -180,6 +180,7 @@ func main() {
 		total_latency += log.latency[i]
 		total_optime += log.op_time[i]
 	}
+	fmt.Println("Total Elapsed Time: %v\n", elapsed)
 	logFile.WriteString(fmt.Sprintf("Total Operation Time: %v\n", total_optime))
 	logFile.WriteString(fmt.Sprintf("Total Latency: %v\n", total_latency))
 	logFile.WriteString(fmt.Sprintf("Total Elapsed Time: %v\n", elapsed))

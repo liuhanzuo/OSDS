@@ -11,3 +11,5 @@ def clean_txt_files(directory):
 if __name__ == "__main__":
     directory = './data/'
     clean_txt_files(directory)
+    directory = '.'
+    clean_txt_files(directory)

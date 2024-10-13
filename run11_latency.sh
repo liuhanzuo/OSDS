@@ -1,0 +1,1 @@
+go run sync.go LATENCYTEST 300 300 10

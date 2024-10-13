@@ -1,129 +1,121 @@
 package main
 
 import (
-	"os"
 	"fmt"
-	"log"
 	"image/jpeg"
-	"github.com/nfnt/resize"
-	"time"
+	"log"
+	"os"
+	"strconv"
 	"sync"
+	"time"
+
+	"github.com/nfnt/resize"
 )
-type queue struct {
-	items    []string
-	cap int
-	sz  int
-	lock sync.Mutex
-	notempty sync.Cond
-	notfull sync.Cond
-}
-func (q *queue) Init(capacity int) {
-	q.items = make([]string, 0, capacity)
-	q.cap = capacity
-	q.sz = 0
-	q.notempty.L = &q.lock
-	q.notfull.L = &q.lock
+
+type Queue struct {
+	c chan string
 }
 
-func (q *queue) Enqueue(item string) (int, time.Duration) {
-	q.lock.Lock()
-	defer q.lock.Unlock()
-	start := time.Now()
-	for q.sz == q.cap {
-//		fmt.Println("Waiting enqueue thread", item)
-		q.notfull.Wait()
-	}
-	// if q.sz == q.cap {
-	// 	fmt.Println("queue is full, cannot enqueue", item)
-	// 	return 1
-	// }
-	q.items = append(q.items, item)
-	q.sz++
-	elapsed := time.Since(start)
-	q.notempty.Signal()
-	//fmt.Println("Enqueued", item)
-	return 0, elapsed
+func (q *Queue) Init(capacity int) {
+	q.c = make(chan string, capacity)
+}
+func (q *Queue) Enqueue(item string) int {
+	q.c <- item
+	return 0
+}
+func (q *Queue) Dequeue() (string, int) {
+	return <-q.c, 0
+}
+func (q *Queue) size() int {
+	return len(q.c)
+}
+func (q *Queue) capacity() int {
+	return cap(q.c)
 }
 
-func (q *queue) Dequeue() (string, int, time.Duration) {
-	q.lock.Lock()
-	defer q.lock.Unlock()
-	start := time.Now()
-	for q.sz == 0 {
-//		fmt.Println("Waiting dequeue thread")
-		q.notempty.Wait()
-	}
-	// if q.sz == 0 {
-	// 	fmt.Println("queue is empty, cannot dequeue")
-	// 	return "", 1
-	// }
-	item := q.items[0]
-	q.items = q.items[1:]
-	q.sz--
-	elapsed := time.Since(start)
-	q.notfull.Signal()
-	//fmt.Println("Dequeued", item)
-	return item, 0, elapsed
-}
+var wg sync.WaitGroup
+var lock sync.Mutex
+var q Queue
+var queue_capacity int
+var thread_num int
+var all int
+var latency []float64
 
-func (q *queue) Size() int {
-	q.lock.Lock()
-	defer q.lock.Unlock()
-	return q.sz
-}
-
-func (q *queue) Capacity() int {
-	return q.cap
-}
-func rsize(id string){
-	filename := "tiny-imagenet-200//test//images//test_"+id+".JPEG";
-	file, err := os.Open(filename)
-	if err != nil {
-		fmt.Println("Load picture failed", filename)
-		log.Fatal(err)
+func func2(i int) {
+	for {
+		id, error := q.Dequeue()
+		if error != 0 {
+			return
+		}
+		st := time.Now()
+		filename := "./gitclone/tiny-imagenet-200/test/images/test_" + id + ".JPEG"
+		file, err := os.Open(filename)
+		if err != nil {
+			fmt.Println("Load picture failed", filename)
+			log.Fatal(err)
+		}
+		img, err := jpeg.Decode(file)
+		m := resize.Resize(128, 128, img, resize.Lanczos3)
+		if err != nil {
+			fmt.Println("Decode picture failed", filename)
+			log.Fatal(err)
+		}
+		file.Close()
+		filename = "./gitclone/tiny-imagenet-200/test/images/resize_demo_resized_" + id + ".JPEG"
+		out, err := os.Create(filename)
+		if err != nil {
+			fmt.Println("Write picture failed", filename)
+			log.Fatal(err)
+		}
+		defer out.Close()
+		jpeg.Encode(out, m, nil)
+		lock.Lock()
+		tmp, _ := strconv.Atoi(id)
+		if tmp%100 == 0 {
+			fmt.Fprintf(os.Stderr, "DONE %s\n", id)
+		}
+		latency = append(latency, time.Since(st).Seconds())
+		lock.Unlock()
+		wg.Done()
 	}
-	img, err := jpeg.Decode(file)
-	m := resize.Resize(128, 128, img, resize.Lanczos3)
-	if err != nil {
-		fmt.Println("Decode picture failed", filename)
-		log.Fatal(err)
-	}
-	file.Close()
-	filename = "tiny-imagenet-200//test//images//resize_demo_resized_"+id+".JPEG";
-	out, err := os.Create(filename)
-	if err != nil {
-		fmt.Println("Write picture failed", filename)
-		log.Fatal(err)
-	}
-	defer out.Close()
-
-	jpeg.Encode(out, m, nil)
 }
-var wait sync.WaitGroup
-var q queue;
-func func1(i int){
-	for j:=i*100;j<i*100+100;j++{
-		str:=fmt.Sprintf("%d",j)
-		q.Enqueue(str)
-	}
-	wait.Done()
-}
-func func2(i int){
-	for j:=0;j<100;j++{
-		str,_,_:=q.Dequeue()
-		rsize(str)
-	}
-	wait.Done()
-}
-func main(){
-	start:=time.Now()
-	q.Init(100)
-	for i:=0;i<100;i++{
-		wait.Add(1)
-		go func1(i)
-		wait.Add(1)
+func run() {
+	for i := 0; i < thread_num; i++ {
 		go func2(i)
 	}
-	wait.Wait()
-	fmt.Println("time used multi-thread %d",time.Since(start))
+	for i := 0; i < all; i++ {
+		name := fmt.Sprintf("%d", i)
+		q.Enqueue(name)
+		wg.Add(1)
+	}
+	wg.Wait()
+}
+func main() {
+	thread_num, _ = strconv.Atoi(os.Args[1])
+	queue_capacity, _ = strconv.Atoi(os.Args[2])
+	mode := os.Args[3]
+	all = 1000
+	start := time.Now()
+	q.Init(queue_capacity)
+	run()
+	throughput := float64(all) / time.Since(start).Seconds()
+	// latency_sum:=float64(0)
+	// for i := 0; i < all; i++ {
+	// 	latency_sum += latency[i]
+	// }
+	// time_in_second := time.Since(start).Seconds()
+	// fmt.Println(mode)
+	if mode == "THREADPUT" {
+		FILENAME := fmt.Sprintf("./data/RESIZE_THROUGHPUT_TN%dQL%d", thread_num, queue_capacity)
+		file, _ := os.OpenFile(FILENAME+".txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		fmt.Fprintf(file, "%f\n", throughput)
+	} else if mode == "LATENCY" {
+		fmt.Println(all)
+		for i := 0; i < all; i++ {
+			fmt.Println(latency[i])
+		}
+	}
+	// fmt.Println("time multi-thread ", time_in_second)
+	// fmt.Println("latency multi-thread ", latency_sum)
+	// fmt.Println("throughput multi-thread ", throughput)
 }

@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{CJK}
+\usepackage{algorithm}
+\usepackage{graphicx}
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+
+\usepackage{amsthm}
+
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{theorem}{Theorem}
+
+\newtheorem*{definition}{Definition}
+
+
+\newcommand{\Class}{Operating Systems \& Distributive Systems}
+
+% Homework Specific Information. Change it to your own
+\newcommand{\Title}{\\Project 1 Part 1.2 Report}
+\newcommand{\StudentName}{Ziheng Zhou}
+\newcommand{\StudentClass}{}
+\newcommand{\StudentNumber}{2024010811}
+
+% In case you need to adjust margins:
+\topmargin=-0.45in      %
+\evensidemargin=0in     %
+\oddsidemargin=0in      %
+\textwidth=6.5in        %
+\textheight=9.0in       %
+\headsep=0.25in         %
+
+% Setup the header and footer
+\pagestyle{fancy}                                                       %
+\lhead{\StudentName}                                                 %
+\chead{\Title}  %
+\rhead{\firstxmark}                                                     %
+\lfoot{\lastxmark}                                                      %
+\cfoot{}                                                                %
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}}                          %
+\renewcommand\headrulewidth{0.4pt}                                      %
+\renewcommand\footrulewidth{0.4pt}                                      %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some tools
+\newcommand{\enterProblemHeader}[1]{\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak%
+                                    \nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak}%
+\newcommand{\exitProblemHeader}[1]{\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak%
+                                   \nobreak\extramarks{#1}{}\nobreak}%
+
+\newcommand{\homeworkProblemName}{}%
+\newcounter{homeworkProblemCounter}%
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]%
+  {\stepcounter{homeworkProblemCounter}%
+   \renewcommand{\homeworkProblemName}{#1}%
+   \section*{\homeworkProblemName}%
+   \enterProblemHeader{\homeworkProblemName}}%
+  {\exitProblemHeader{\homeworkProblemName}}%
+
+\newcommand{\homeworkSectionName}{}%
+\newlength{\homeworkSectionLabelLength}{}%
+\newenvironment{homeworkSection}[1]%
+  {% We put this space here to make sure we're not connected to the above.
+
+   \renewcommand{\homeworkSectionName}{#1}%
+   \settowidth{\homeworkSectionLabelLength}{\homeworkSectionName}%
+   \addtolength{\homeworkSectionLabelLength}{0.25in}%
+   \changetext{}{-\homeworkSectionLabelLength}{}{}{}%
+   \subsection*{\homeworkSectionName}%
+   \enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]}}%
+  {\enterProblemHeader{\homeworkProblemName}%
+
+   % We put the blank space above in order to make sure this margin
+   % change doesn't happen too soon.
+   \changetext{}{+\homeworkSectionLabelLength}{}{}{}}%
+
+\newcommand{\Answer}{\ \\\textbf{Answer:} }
+\newcommand{\Acknowledgement}[1]{\ \\{\bf Acknowledgement:} #1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make title
+\title{\textmd{\bf \Class: \Title}}
+\author{\textbf{Xinran Li, Hanzuo Liu, Ziheng Zhou}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{spacing}{1.1}
+\maketitle \thispagestyle{empty}
+%\cite{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin edit from here
+
+The implementations can be found in \texttt{multi.go}.
+
+
+\begin{homeworkProblem}[Throughput Analyzis]
+
+We test the throughputs under different values of working threads \& queue lengths. See Figure 1 \& 2.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/resize_throughput_threadnum.png}
+    \caption{Throughput vs \# of Threads.}
+    \label{fig:enter-label}
+    
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/resize_throughput_queuelength.png}
+    \caption{Throughput vs Queue Length.}
+    \label{fig:enter-label}
+\end{figure}
+
+We conclude that
+
+\begin{itemize}
+    \item The throughput grows nearly linearly with \# of threads until there are 20 threads. After that the performance starts to swing irregularly. We infer that the maximum parallelism that our working server can reach is less than 20x.
+    \item There is no significant relationship between queue length \& performance. We infer that this is because the main workload is on FS operations / resizing images. We have to mark that there are relatively large fluctuations in the servers' performance; we are currently re-running experiments for 10 times to deal with it.
+\end{itemize}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Latency Analyzis]
+    We plot the latency distribution for the case \# of Threads = Queue Length = 300.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/resize_latency.png}
+    \caption{Resize: Latency Distribution.}
+    \label{fig:enter-label}
+\end{figure}
+
+
+We conclude that
+
+\begin{itemize}
+    \item Most latencies focus on a narrow time slice centering at about 1 second; this shows that our queue implementation is steady and can handle request efficiently for most requests.
+    \item There are still requests costing more than 20 seconds; this is caused by getting blocked.
+\end{itemize}
+    
+\end{homeworkProblem}
+
+
+\end{spacing}
+\end{document}

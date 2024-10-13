@@ -1,0 +1,1 @@
+go run multi.go 60 1000 LATENCY > ./data/RESIZE_LATENCY_TN60QL60.txt

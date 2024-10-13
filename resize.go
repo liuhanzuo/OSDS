@@ -12,7 +12,7 @@ import (
 func main(){
 	start:=time.Now()
 	for i:=0;i<10000;i++ {
-		filename := fmt.Sprintf("tiny-imagenet-200//test//images//test_%d.JPEG",i);
+		filename := fmt.Sprintf("./gitclone/tiny-imagenet-200/test/images/test_%d.JPEG",i);
 		file, err := os.Open(filename)
 		if err != nil {
 			fmt.Println("Load picture failed", filename)
@@ -25,7 +25,7 @@ func main(){
 			log.Fatal(err)
 		}
 		file.Close()
-		filename = fmt.Sprintf("tiny-imagenet-200//test//images//resize_demo_resized_%d.JPEG",i);
+		filename = fmt.Sprintf("./gitclone/tiny-imagenet-200/test/images/resize_demo_resized_%d.JPEG",i);
 		out, err := os.Create(filename)
 		if err != nil {
 			fmt.Println("Write picture failed", filename)
@@ -35,5 +35,5 @@ func main(){
 
 		jpeg.Encode(out, m, nil)
 	}
-	fmt.Println("time used baseline %d",time.Since(start))
+	fmt.Println("time used baseline %v",time.Since(start))
 }

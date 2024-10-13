@@ -1,0 +1,18 @@
+go run sync.go THROUGHPUTTEST 1 1 10
+go run sync.go THROUGHPUTTEST 2 2 10
+go run sync.go THROUGHPUTTEST 5 5 10
+go run sync.go THROUGHPUTTEST 10 10 10
+go run sync.go THROUGHPUTTEST 20 20 10
+go run sync.go THROUGHPUTTEST 50 50 10
+go run sync.go THROUGHPUTTEST 100 100 10
+go run sync.go THROUGHPUTTEST 200 200 10
+go run sync.go THROUGHPUTTEST 300 300 10
+
+go run sync.go THROUGHPUTTEST 300 1 10
+go run sync.go THROUGHPUTTEST 300 2 10
+go run sync.go THROUGHPUTTEST 300 5 10
+go run sync.go THROUGHPUTTEST 300 10 10
+go run sync.go THROUGHPUTTEST 300 20 10
+go run sync.go THROUGHPUTTEST 300 50 10
+go run sync.go THROUGHPUTTEST 300 100 10
+go run sync.go THROUGHPUTTEST 300 200 10
