@@ -49,3 +49,19 @@ Total operation time stand for operation of each thread in total
 Total latency stand for the latency of each thread in total
 
 Total elapsed time stand for the total time for both operating and waiting for the lock, **which is the time we were optimizing!**
+
+## make
+
+Here we implement some ```make``` elements in makefile. To be more specific, you can run
+
+```makefile
+make part11
+```
+
+to generate the report for part1.1
+
+```makefile
+make part12
+```
+
+to generate the report for part1.2
