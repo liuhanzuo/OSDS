@@ -107,59 +107,7 @@ func latencyTest(queue_len int, thread_num int, filename string) {
 	// fmt.Fprintf(file, "queue length is %d, thread number is %d, result is stored in %s\n", queue_len, thread_num, filename)
 	// file.Close()
 	wait.Add(2 * Total_thread_num)
-	/*for i := 0; i < 2*Total_thread_num; i++ {
-		// wait.Add(1)
-		if (i & 1) == 0 {
-			go func(val string, id int) {
-				defer wait.Done()
-				start := time.Now()
-				_ = q.Enqueue(val)
-				latency := time.Since(start)
-				enqueTimeList[id] = latency.Nanoseconds()
-				// file, _ := os.OpenFile(FILENAME+".txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-				// defer file.Close()
-				// output := fmt.Sprintf("Enqueue %s took operation %s and latency %s\n", val, optime, latency)
-				// if _, err := file.WriteString(output); err != nil {
-				//	fmt.Println("Failed to write to file:", err)
-				//}
-				// enqueue_opfile, _ := os.OpenFile(FILENAME+"en_op.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-				// enqueue_optime := fmt.Sprintf("%s\n", optime)
-				// enqueue_opfile.WriteString(enqueue_optime)
-				// enqueue_opfile.Close()
-				// enqueue_latfile, _ := os.OpenFile(FILENAME+"en_la.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-				// enqueue_latency := fmt.Sprintf("%s\n", latency)
-				// enqueue_latfile.WriteString(enqueue_latency)
-				// enqueue_latfile.Close()
-			}(fmt.Sprintf("item%d", i), i)
-		} else {
-			// wait.Add(1)
-			go func(id int) {
-				defer wait.Done()
-				start := time.Now()
-
-				_, _ = q.Dequeue()
-				latency := time.Since(start)
-				dequeTimeList[id] = latency.Nanoseconds()
-				// file, _ := os.OpenFile(FILENAME+".txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-				// defer file.Close()
-				// output := fmt.Sprintf("Dequeue took operation %s and latency %s\n", optime, latency)
-				// if _, err := file.WriteString(output); err != nil {
-				// 	fmt.Println("Failed to write to file:", err)
-				// }
-
-				// dequeue_opfile, _ := os.OpenFile(FILENAME+"de_op.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-				// dequeue_optime := fmt.Sprintf("%s\n", optime)
-				// dequeue_opfile.WriteString(dequeue_optime)
-				// dequeue_opfile.Close()
-				// dequeue_latfile, _ := os.OpenFile(FILENAME+"de_la.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-				// dequeue_latency := fmt.Sprintf("%s\n", latency)
-				// dequeue_latfile.WriteString(dequeue_latency)
-				// dequeue_latfile.Close()
-			}(i)
-
-		}
-	}*/
-
+	fmt.Fprintf(os.Stderr, "A\n");
 	for i := 0; i < Total_thread_num; i++ {
 		// wait.Add(1)
 		go func(val string, id int) {
@@ -210,12 +158,18 @@ func latencyTest(queue_len int, thread_num int, filename string) {
 			// dequeue_latfile.Close()
 		}(i)
 	}
+	fmt.Fprintf(os.Stderr, "B\n");
 	wait.Wait()
-	file, _ := os.OpenFile(filename+".txt", os.O_TRUNC|os.O_CREATE|os.O_WRONLY, 0644)
-	fmt.Fprintln(file, 2*thread_num)
+	fmt.Fprintf(os.Stderr, "C\n");
+	file, _ := os.OpenFile(filename+"de.txt", os.O_TRUNC|os.O_CREATE|os.O_WRONLY, 0644)
+	fmt.Fprintln(file, thread_num)
 	for i := 0; i < thread_num; i++ {
 		fmt.Fprintln(file, dequeTimeList[i])
 	}
+	file.Close()
+
+	file, _ = os.OpenFile(filename+"en.txt", os.O_TRUNC|os.O_CREATE|os.O_WRONLY, 0644)
+	fmt.Fprintln(file, thread_num)
 	for i := 0; i < thread_num; i++ {
 		fmt.Fprintln(file, enqueTimeList[i])
 	}

@@ -9,8 +9,9 @@ n = int(input())
 a = []
 for i in range(0, n):
     a.append(float(input()))
-    if(a[-1] > 1000) :
-       a.pop() 
+a.sort()
+t = n // 100
+a = a[0:n - t]
 plt.hist(a, bins = 100)
 plt.title(sys.argv[1])
 plt.xlabel(sys.argv[2])
