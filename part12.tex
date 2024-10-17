@@ -134,17 +134,33 @@ We conclude that
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{fig/resize_latency.png}
-    \caption{Resize: Latency Distribution.}
+    \includegraphics[width=0.5\linewidth]{fig/resize_latency_1.png}
+    \caption{Resize Latency Distribution, 60 Threads, Queue Length = 1000.}
     \label{fig:enter-label}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/resize_latency_2.png}
+    \caption{Resize Latency Distribution, 60 Threads, Queue Length = 100.}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/resize_latency_3.png}
+    \caption{Resize Latency Distribution, 30 Threads, Queue Length = 1000.}
+    \label{fig:enter-label}
+\end{figure}
+
+(In the above 3 charts largest 1$\%$ of entries are removed to make the plot elegant.)
 
 
 We conclude that
 
 \begin{itemize}
-    \item Most latencies focus on a narrow time slice centering at about 1 second; this shows that our queue implementation is steady and can handle request efficiently for most requests.
-    \item There are still requests costing more than 20 seconds; this is caused by getting blocked.
+    \item While most queries are finished within a few milliseconds, there are queries that take up to 0.1 seconds.
+    \item Distribution graphs look alike for different settings, but the 30 threads case and the 1000 queue length case are both slightly better than the 60 threads, 1000 queue length case. We infer this is because all settings reach maximum parallel level and the more threads / queue size we set, the more context switches / chances of cache miss occur.
 \end{itemize}
     
 \end{homeworkProblem}
