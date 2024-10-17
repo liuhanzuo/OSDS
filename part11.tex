@@ -102,9 +102,7 @@
 The implementations can be found in \texttt{sync.go}.
 
 
-\begin{homeworkProblem}[Throughput Analyzis]
 
-We test the throughputs under different values of working threads \& queue lengths. See Figure 1 \& 2.
 
 \begin{figure}[H]
     \centering
@@ -121,6 +119,11 @@ We test the throughputs under different values of working threads \& queue lengt
     \label{fig:enter-label}
 \end{figure}
 
+
+\begin{homeworkProblem}[Throughput Analyzis]
+
+We test the throughputs under different values of working threads \& queue lengths. See Figure 1 \& 2.
+
 We conclude that
 
 \begin{itemize}
@@ -134,23 +137,32 @@ We conclude that
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{fig/deque_latency.png}
-    \caption{Dequeue Latency Distribution.}
+    \includegraphics[width=0.5\linewidth]{fig/latency.png}
+    \caption{Latency Distribution, 3000 Threads Enqueue / Dequeue Each, Queue Length = 3000.}
     \label{fig:enter-label}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{fig/enque_latency.png}
-    \caption{Enqueue Latency Distribution.}
+    \includegraphics[width=0.5\linewidth]{fig/small_latency.png}
+    \caption{Latency Distribution, 3000 Threads Enqueue / Dequeue Each, Queue Length = 300.}
     \label{fig:enter-label}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/smaller_latency.png}
+    \caption{Latency Distribution, 30000 Threads Enqueue / Dequeue Each, Queue Length = 30000.}
+    \label{fig:enter-label}
+\end{figure}
+
+(In the above 3 charts largest 1$\%$ of entries are removed to make the plot elegant.)
 
 We conclude that
 
 \begin{itemize}
-    \item Most dequeue operations finish within 600ns, with density focused on 400ns; enqueue operations are faster with two density peaks at 250ns \& 450ns.
-    \item Both types of operations have data entries with over 10000ns of latency. This is due to long block in the queue.
+    \item Small queue lengths make latency much larger. We see that when queue length matches \# of threads $99\%$ of all operations are finished in microseconds, while most can be finished within nanoseconds. However when length is only 1/10 of number of threads there is about 1/10 of queries taking 1 ms or even higher.
+    \item Number of threads do not affect latency distribution much.
 \end{itemize}
     
 \end{homeworkProblem}

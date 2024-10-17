@@ -1,1 +1,3 @@
-go run multi.go 60 1000 LATENCY > ./data/RESIZE_LATENCY_TN60QL60.txt
+go run multi.go 60 1000 LATENCY > ./data/RESIZE_LATENCY_TN60QL1000.txt
+go run multi.go 60 100 LATENCY > ./data/RESIZE_LATENCY_TN60QL100.txt
+go run multi.go 30 1000 LATENCY > ./data/RESIZE_LATENCY_TN30QL1000.txt

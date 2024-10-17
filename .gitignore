@@ -6,3 +6,4 @@ gitclone/*
 *.lo
 *.pdf
 *.aux
+part11.fdb_latexmk

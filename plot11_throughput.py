@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
-a = [1, 2, 5, 10, 20, 50, 100, 200, 300]
+a = [1, 2, 5, 10, 20, 50, 100, 150, 200, 250, 300]
 b = 300
 dqList = []
 enList = []

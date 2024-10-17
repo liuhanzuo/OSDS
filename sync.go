@@ -93,8 +93,8 @@ func printChannel[T any](printList chan T, filename string) {
 	}
 }
 
-var dequeTimeList [10000]int64
-var enqueTimeList [10000]int64
+var dequeTimeList [100000]int64
+var enqueTimeList [100000]int64
 
 func latencyTest(queue_len int, thread_num int, filename string) {
 	var wait sync.WaitGroup

@@ -1,1 +1,3 @@
-python3 plot_distribution.py < ./data/RESIZE_LATENCY_TN60QL60.txt "Resize Latency Distribution" "Time (seconds)" "Instances" ./fig/resize_latency.png
+python3 plot_distribution.py < ./data/RESIZE_LATENCY_TN60QL1000.txt "Resize Latency Distribution I" "Time (seconds)" "Instances" ./fig/resize_latency_1.png
+python3 plot_distribution.py < ./data/RESIZE_LATENCY_TN60QL100.txt "Resize Latency Distribution II" "Time (seconds)" "Instances" ./fig/resize_latency_2.png
+python3 plot_distribution.py < ./data/RESIZE_LATENCY_TN30QL1000.txt "Resize Latency Distribution III" "Time (seconds)" "Instances" ./fig/resize_latency_3.png

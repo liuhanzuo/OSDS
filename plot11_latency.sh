@@ -1,3 +1,3 @@
 python3 plot_distribution.py < ./data/LATENCY_TN3000QL3000.txt "Latency Distribution I" "Time (nanoseconds)" "Instances" ./fig/latency.png
-python3 plot_distribution.py < ./data/LATENCY_TN3000QL300en.txt "Latency Distribution II" "Time (nanoseconds)" "Instances" ./fig/small_latency.png
-python3 plot_distribution.py < ./data/LATENCY_TN3000QL30de.txt "Latency Distribution III" "Time (nanoseconds)" "Instances" ./fig/smaller_latency.png
+python3 plot_distribution.py < ./data/LATENCY_TN3000QL300.txt "Latency Distribution II" "Time (nanoseconds)" "Instances" ./fig/small_latency.png
+python3 plot_distribution.py < ./data/LATENCY_TN30000QL30000.txt "Latency Distribution III" "Time (nanoseconds)" "Instances" ./fig/smaller_latency.png
