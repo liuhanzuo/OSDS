@@ -21,8 +21,6 @@ run11:
 	bash run11_latency.sh
 	bash run11_throughput.sh
 run12:
-	echo "we are running experiments multiple times for accuracy"
-	echo "it may takes up to 8 hours to finish"
 	bash run12_latency.sh
 	python3 run12_throughput.py 10
 

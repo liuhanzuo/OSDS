@@ -7,3 +7,4 @@ gitclone/*
 *.pdf
 *.aux
 part11.fdb_latexmk
+part12.fdb_latexmk
