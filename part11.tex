@@ -128,7 +128,7 @@ We conclude that
 
 \begin{itemize}
     \item In general throughput grows when there are more threads, but the growth is sublinear. The reason can be that there are more context switches.
-    \item When the queue is of size 1 the throughput is $\bold{surprisingly\ high}$, even higher than the case when the queue is of maximum capable length. We do not know the specific reason. For the rest cases the throughput grows slowly with queue length (the shape of the curve looks like logarithm).
+    \item When the queue is of size 1 the throughput is $\bold{surprisingly\ high}$, even higher than the case when the queue is of maximum capable length. We infer this is because the queue can fit into registers. For the rest cases the throughput grows slowly with queue length (the shape of the curve looks like logarithm).
 \end{itemize}
 \end{homeworkProblem}
 

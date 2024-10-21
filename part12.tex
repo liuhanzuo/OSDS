@@ -159,7 +159,7 @@ We conclude that
 We conclude that
 
 \begin{itemize}
-    \item While most queries are finished within a few milliseconds, there are queries that take up to 0.1 seconds.
+    \item While most queries are finished within a few milliseconds, there are queries that take up to 0.1 seconds. These are due to being blocked in the queue.
     \item Distribution graphs look alike for different settings, but the 30 threads case and the 1000 queue length case are both slightly better than the 60 threads, 1000 queue length case. We infer this is because all settings reach maximum parallel level and the more threads / queue size we set, the more context switches / chances of cache miss occur.
 \end{itemize}
     
